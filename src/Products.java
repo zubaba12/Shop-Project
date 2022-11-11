@@ -12,17 +12,20 @@ public class Products {
         this.id = id;
         this.inStock = inStock;
     }
-
-    @Override
-    public String toString() {
-        return "Products{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", id=" + id +
-                ", inStock=" + inStock +
-                '}';
+    public void print(){
+        System.out.println(this.name + " " + this.description +  " " + this.price +  " " + this.id +  " " + this.inStock);
     }
+
+//    @Override
+//    public String toString() {
+//        return "Products{" +
+//                "name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", price=" + price +
+//                ", id=" + id +
+//                ", inStock=" + inStock +
+//                '}';
+//    }
 }
 //@channel Instructions for the class hw / weekend challenge:
 //        Your project must
