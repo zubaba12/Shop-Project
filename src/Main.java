@@ -4,5 +4,6 @@ public class Main {
         //call the create method
         walmart.createProduct();
 //        walmart.printProducts();
+        walmart.updateProduct();
     }
 }
