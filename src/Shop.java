@@ -16,10 +16,14 @@ public class Shop {
         for (Products products : products.values()) {
             products.print();
         }
+//        Main.customerMessage();
     }
 
     //creating "create" method for crud
     public void createProduct() {
+//        System.out.println("Would you like to create more product?");
+//        System.out.println("true or false");
+//        String choose = scan.nextLine();
         while (true) {
             System.out.println("What is the name of your product?");
             String name = scan.nextLine();
@@ -39,7 +43,12 @@ public class Shop {
 
 //            products.toString()
             printProducts();
-            updateProduct();
+            Main.customerMessage();
+//            System.out.println("Would you like to create more product?");
+//            System.out.println("true or false");
+//            choose = scan.nextLine();
+//            updateProduct();
+
 
         }
     }
@@ -51,31 +60,41 @@ public class Shop {
         for (Products products : products.values()) {
             if (pID == products.id) {
                 System.out.println("What is the new name of your product?");
-                String name = scan.nextLine();
-                System.out.println("Describe your product?");
-                String description = scan.nextLine();
-                System.out.println("what is the new price?");
-                double price = Double.valueOf(scan.nextLine());
-                System.out.println("what is the product id?");
-                int id = scan.nextInt();
                 scan.nextLine();
+                products.name = scan.nextLine();
+
+                System.out.println("Describe your product?");
+                products.description = scan.nextLine();
+
+                System.out.println("what is the new price?");
+                products.price = Double.valueOf(scan.nextLine());
+
+                System.out.println("what is the product id?");
+                products.id = scan.nextInt();
+                scan.nextLine();
+
                 System.out.println("Is the product in stock?");
-                boolean inStock = Boolean.valueOf(scan.nextLine());
+                products.inStock = Boolean.valueOf(scan.nextLine());
 
             }
         }
         printProducts();
+        Main.customerMessage();
+
     }
 
     public void deleteProduct() {
         this.printProducts();
         System.out.println("Please enter the ID for the product you want to update");
-        int pID = scan.nextInt();
-        //Products deleteProduct;
-        for (Integer x : products.keySet()) {
-            if (x == pID) {
-                this.products.remove(x);
+        int id = scan.nextInt();
+//        Products deleteProduct;
+        for (Products products2 : products.values()) {
+            if (products2.id == id) {
+                products.remove(products2);
             }
         }
+        printProducts();
+        Main.customerMessage();
     }
+
 }
