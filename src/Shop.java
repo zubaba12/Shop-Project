@@ -13,7 +13,7 @@ public class Shop {
     //creating print method to print products
     public void printProducts() {
         System.out.println("Here are your products: ");
-        for (Products products : products.values()) {
+        for (Products products : this.products.values()) {
             products.print();
         }
 //        Main.customerMessage();
@@ -21,9 +21,7 @@ public class Shop {
 
     //creating "create" method for crud
     public void createProduct() {
-//        System.out.println("Would you like to create more product?");
-//        System.out.println("true or false");
-//        String choose = scan.nextLine();
+
         while (true) {
             System.out.println("What is the name of your product?");
             String name = scan.nextLine();
@@ -41,14 +39,16 @@ public class Shop {
 
             products.put(id, items);
 
-//            products.toString()
             printProducts();
-            Main.customerMessage();
-//            System.out.println("Would you like to create more product?");
-//            System.out.println("true or false");
-//            choose = scan.nextLine();
-//            updateProduct();
 
+            System.out.println("Would you like to create more product?");
+            System.out.println("true or false");
+            String choose = scan.nextLine();
+            if(choose.equalsIgnoreCase("true")){
+                System.out.println("Let's keep products!");
+            }else if(choose.equalsIgnoreCase("false")){
+                break;
+            }
 
         }
     }
@@ -67,34 +67,35 @@ public class Shop {
                 products.description = scan.nextLine();
 
                 System.out.println("what is the new price?");
-                products.price = Double.valueOf(scan.nextLine());
+                products.price = scan.nextDouble();
 
-                System.out.println("what is the product id?");
-                products.id = scan.nextInt();
-                scan.nextLine();
+//                System.out.println("what is the product id?");
+//                products.id = scan.nextInt();
+//                scan.nextLine();
 
                 System.out.println("Is the product in stock?");
-                products.inStock = Boolean.valueOf(scan.nextLine());
+                products.inStock = scan.nextBoolean();
 
             }
         }
         printProducts();
-        Main.customerMessage();
 
     }
 
     public void deleteProduct() {
-        printProducts();
-        System.out.println("Please enter the ID for the product you want to delete");
+        this.printProducts();
+        System.out.println("Please enter the ID for the product you want to update");
         int pID = scan.nextInt();
+        System.out.println(products.get(pID));
         products.remove(pID);
-//        for (Products x : products.values()) {
-//            if (pID == x.id ) {
-//                products.remove(x);
+//        Products deleteProduct;
+//        for (Integer id : products.keySet()) {
+//            if (pID == id ) {
+//                products.remove(id);
 //            }
 //        }
         printProducts();
-        Main.customerMessage();
+//        Main.customerMessage();
     }
 
 }
