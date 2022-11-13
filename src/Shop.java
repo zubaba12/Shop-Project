@@ -39,7 +39,7 @@ public class Shop {
 
             Products items = new Products(name, description, price, id, inStock);
 
-            products.put(Integer.valueOf(id), items);
+            products.put(id, items);
 
 //            products.toString()
             printProducts();
@@ -84,15 +84,15 @@ public class Shop {
     }
 
     public void deleteProduct() {
-        this.printProducts();
-        System.out.println("Please enter the ID for the product you want to update");
-        int id = scan.nextInt();
-//        Products deleteProduct;
-        for (Products products2 : products.values()) {
-            if (products2.id == id) {
-                products.remove(products2);
-            }
-        }
+        printProducts();
+        System.out.println("Please enter the ID for the product you want to delete");
+        int pID = scan.nextInt();
+        products.remove(pID);
+//        for (Products x : products.values()) {
+//            if (pID == x.id ) {
+//                products.remove(x);
+//            }
+//        }
         printProducts();
         Main.customerMessage();
     }
